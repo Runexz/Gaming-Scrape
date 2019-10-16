@@ -7,4 +7,12 @@ module.exports = function (router) {
             javascript: "articles.js"
         });
     });
+
+    // Route renders the saved handlebars page
+    router.get("/saved", function (req, res) {
+        res.render("saved", {
+            style: "saved.css",
+            javascript: "saved.js"
+        });
+    });
 }
