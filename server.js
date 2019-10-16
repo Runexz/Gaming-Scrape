@@ -3,6 +3,11 @@ var express = require("express");
 var mongoose = require("mongoose");
 var expressHandlebars = require("express-handlebars");
 
+// Axios is a promised-based http library, similar to jQuery's Ajax method
+// It works on the client and on the server
+var axios = require("axios");
+var cheerio = require("cheerio");
+
 // Port to be either the host's port or 3000
 var PORT = process.env.PORT || 3000;
 
@@ -29,18 +34,18 @@ app.set("view engine", "handlebars");
 // All requests go through the router middleware
 app.use(router);
 
-// // If app is deployed, use the deployed database. Otherwise use the local database called gamingHeadlines
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/gameingHeadlines";
+// If app is deployed, use the deployed database. Otherwise use the local database called gamingHeadlines
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/gameingHeadlines";
 
-// // Connect to the mongo DB
-// mongoose.connect(MONGODB_URI, {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-//     })
-//     .then(() => console.log('DB Connected!'))
-//     .catch(err => {
-//     console.log(`db error ${err.message}`);
-//     });
+// Connect to the mongo DB
+mongoose.connect(MONGODB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    })
+    .then(() => console.log('DB Connected!'))
+    .catch(err => {
+    console.log(`db error ${err.message}`);
+    });
 
 // Listen on port
 app.listen(PORT, function () {
