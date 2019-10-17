@@ -2,12 +2,11 @@ body {
     background: red;
 }
 
-.jumbotron {
+#jumbotron {
     background-image: url("../images/scrapeindex.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
 h1, p {
