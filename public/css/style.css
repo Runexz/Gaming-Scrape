@@ -1,3 +1,19 @@
 body {
     background: red;
 }
+
+.jumbotron {
+    background-image: url("../images/scrapeindex.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+h1, p {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
+    0.2em 0.5em 0.1em #600,
+      -0.3em 0.1em 0.1em #060,
+      0.4em -0.3em 0.1em #006;
+}
