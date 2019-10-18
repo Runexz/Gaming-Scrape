@@ -63,14 +63,14 @@ app.get("/scrape", function (req, res) {
         var result = [];
 
         // Now, we grab every h2 within an article tag, and do the following:
-         $("div.article-summary").each(function (i, element) {
+        $("div.article-summary").each(function (i, element) {
 
 
             // Save the text of the h4-tag as "title"
             var title = $(element).children("h2").text();
-         
+
             var link = $(element).children("h2").children("a").attr("href");
-            
+
             var summary = $(element).children("p").text();
 
             if (title && summary && link) {
@@ -117,6 +117,49 @@ app.get("/articles", function (req, res) {
         });
 });
 
+// Route for getting all Note info from the db
+app.get("/notes", function (req, res) {
+    // Grab every document in the Note collection
+    db.Note.find({})
+        .then(function (dbNote) {
+            // If we were able to successfully find Notes, send them back to the client
+            res.json(dbNote);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
+
+app.post("/notes", function (req, res) {
+    // Create a new note and pass the req.body to the entry
+    db.Note.create(req.body)
+        .then(function (dbNote) {
+            // If we were able to successfully create a note and send it back to the client
+            res.json(dbNote);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
+
+// Route for saving/updating an Article's associated Note
+app.post("/articles/:id", function (req, res) {
+    // Create a new note and pass the req.body to the entry
+    db.Note.create(req.body)
+        .then(function (dbArticle) {
+            // If we were able to successfully update an Article, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+
+
+
+});
 // Listen on port
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
