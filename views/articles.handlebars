@@ -31,7 +31,7 @@
     {{#each articleSchema}}
     <div class="card">
         <div class="card-header">
-            <h3>{{this._id}}</h3>
+            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span>Click here to save this article!</span></h3>
         </div>
         <div class="card-body">
             <h5 class="card-title">{{this.title}}</h5>
@@ -39,12 +39,31 @@
             {{!-- <p class="card-text">{{this.link}}</p> --}}
             <a href="https://www.gameinformer.com{{this.link}}" target="_blank">{{this.link}}</a>
             <br>
-            <div class="d-flex justify-content-end">
-            <a href="#" class="btn btn-lg btn-success">Make a note and save the article!</a>
-            </div>
+            {{!-- <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-lg btn-success note-save" data-toggle="modal" data-target="#exampleModal">Make a note and save the article!</button>
+            </div> --}}
         </div>
     </div>
     {{/each}}
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Article Saved!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You can view your article in the Saved Articles tab.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="card fixed-bottom text-white text-center bg-dark">
