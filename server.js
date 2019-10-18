@@ -131,6 +131,7 @@ app.get("/notes", function (req, res) {
         });
 });
 
+// Route for posting saved article to notes db
 app.post("/notes", function (req, res) {
     // Create a new note and pass the req.body to the entry
     db.Note.create(req.body)
@@ -145,9 +146,12 @@ app.post("/notes", function (req, res) {
 });
 
 // Route for saving/updating an Article's associated Note
-app.post("/articles/:id", function (req, res) {
+app.put("/notes/:id", function (req, res) {
     // Create a new note and pass the req.body to the entry
-    db.Note.create(req.body)
+    // db.Note.create(req.body)
+    db.Note.updateOne(
+        {_id: req.params.id}, 
+        {note: req.body})
         .then(function (dbArticle) {
             // If we were able to successfully update an Article, send it back to the client
             res.json(dbArticle);
