@@ -24,8 +24,22 @@
     <p>Here are all the Articles you saved with your notes attached!</p>
 </div>
 
-<div class="container saved-container">
-
+<div class="container article-container">
+    {{#each noteSchema}}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span>Click here to add a Note!</span></h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.summary}}</p>
+            {{!-- <p class="card-text">{{this.link}}</p> --}}
+            <a href="https://www.gameinformer.com{{this.link}}" target="_blank">{{this.link}}</a>
+            <br>
+            <p class="card-text">{{this.note}}</p>
+        </div>
+    </div>
+    {{/each}}
 </div>
 
 <div class="card fixed-bottom text-white text-center bg-dark">
