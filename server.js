@@ -63,15 +63,15 @@ app.get("/scrape", function (req, res) {
         var result = [];
 
         // Now, we grab every h2 within an article tag, and do the following:
-        $("div.article-summary").each(function (i, element) {
+         $("div.article-summary").each(function (i, element) {
 
 
             // Save the text of the h4-tag as "title"
             var title = $(element).children("h2").text();
-
-            var summary = $(element).children("p").text();
-
+         
             var link = $(element).children("h2").children("a").attr("href");
+            
+            var summary = $(element).children("p").text();
 
             if (title && summary && link) {
                 var titleNeat = title.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
@@ -84,76 +84,24 @@ app.get("/scrape", function (req, res) {
                     link: linkNeat
                 };
 
+                // console.log('RESULT OBJ', neatTogether);
                 result.push(neatTogether);
             }
 
-            // // Add the text and href of every link, and save them as properties of the result object
-            // result.title = $(this)
-            //     .children("h2")
-            //     .text();
-            // result.summary = $(this)
-            //     .children("p")
-            //     .text();
-            // result.link = $(this)
-            //     .children("h2")
-            //     .children("a")
-            //     .attr("href");
-
-            // Create a new Article using the `result` object built from scraping
-            // db.Article.create(result)
-            //     .then(function (dbArticle) {
-            //         // View the added result in the console
-            //         console.log(dbArticle);
-            //     })
-            //     .catch(function (err) {
-            //         // If an error occurred, log it
-            //         console.log(err);
-            //     });
-            // Send a message to the client
-            // res.send(result);
         });
+        // Create a new Article using the `result` object built from scraping
+        db.Article.create(result)
+            .then(function (dbArticle) {
+                // View the added result in the console
+                console.log(dbArticle);
+            })
+            .catch(function (err) {
+                // If an error occurred, log it
+                console.log(err);
+            });
         res.send(result);
-        console.log(result);
     });
 });
-
-// axios.get("https://www.gameinformer.com").then(function (response) {
-
-//     // Load the body of the HTML into cheerio
-//     var $ = cheerio.load(response.data);
-
-//     // Empty array to save our scraped data
-//     var results = [];
-
-//     // With cheerio, find each div-tag with the class "article-summary" and loop through the results
-//     $("div.article-summary").each(function (i, element) {
-
-//         // Save the text of the h4-tag as "title"
-//         var title = $(element).children("h2").text();
-
-//         var summary = $(element).children("p").text();
-
-//         var link = $(element).children("h2").children("a").attr("href");
-
-//         if (title && summary && link) {
-//             var titleNeat = title.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-//             var summaryNeat = summary.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-//             var linkNeat = link.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-
-//             var neatTogether = {
-//                 title: titleNeat,
-//                 summary: summaryNeat,
-//                 link: linkNeat
-//             };
-
-//             results.push(neatTogether);
-//         }
-
-//     });
-
-//     // After looping through each h4.headline-link, log the results
-//     console.log(results);
-// });
 
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
