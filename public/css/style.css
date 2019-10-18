@@ -25,3 +25,8 @@ body {
 .card {
     margin-top: 15px;
 }
+
+span {
+    color: rgb(144, 79, 79);
+    text-shadow: -1px 0 rgb(0, 0, 0), 0 1px rgb(3, 3, 3), 1px 0 rgb(0, 0, 0), 0 -1px rgb(0, 0, 0);
+}
