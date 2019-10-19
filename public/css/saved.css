@@ -14,6 +14,15 @@ h1, p {
     text-shadow: -2px 0 rgb(255, 255, 255), 0 2px rgb(255, 255, 255), 2px 0 rgb(255, 255, 255), 0 -2px rgb(255, 255, 255);
 }
 
+.article-container {
+    margin-bottom: 100px;
+    
+}
+
+.card {
+    margin-top: 15px;
+}
+
 p {
     font-size: 25px;
 }
