@@ -25,12 +25,12 @@ require("./config/routes")(router);
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, "/public")));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Connects handlebars views folder layout "main.handlebars"
 app.engine("handlebars", expressHandlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -66,13 +66,16 @@ app.get("/scrape", function (req, res) {
         $("div.article-summary").each(function (i, element) {
 
 
-            // Save the text of the h4-tag as "title"
+            // Save the text of the h2-tag as "title"
             var title = $(element).children("h2").text();
 
+            // Save the link from h2 with an a href into a variable
             var link = $(element).children("h2").children("a").attr("href");
 
+            // Save the summary from p element into a variable
             var summary = $(element).children("p").text();
 
+            // RegExr the variables
             if (title && summary && link) {
                 var titleNeat = title.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
                 var summaryNeat = summary.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
@@ -84,10 +87,9 @@ app.get("/scrape", function (req, res) {
                     link: linkNeat
                 };
 
-                // console.log('RESULT OBJ', neatTogether);
+                // Pushes the title, summary, link into result variable
                 result.push(neatTogether);
             }
-
         });
         // Create a new Article using the `result` object built from scraping
         db.Article.create(result)
