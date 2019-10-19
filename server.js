@@ -148,22 +148,19 @@ app.post("/notes", function (req, res) {
 // Route for saving/updating an Article's associated Note
 app.put("/notes/:id", function (req, res) {
     // Create a new note and pass the req.body to the entry
-    // db.Note.create(req.body)
-    db.Note.updateOne(
-        {_id: req.params.id}, 
-        {note: req.body})
-        .then(function (dbArticle) {
+    db.Note.findOneAndUpdate({ _id: req.params.id}, { $set: req.body }, { new:true})
+        
+        // db.Note.updateOne(req.body)
+        .then(function (dbNote) {
             // If we were able to successfully update an Article, send it back to the client
-            res.json(dbArticle);
+            res.json(dbNote);
         })
         .catch(function (err) {
             // If an error occurred, send it to the client
             res.json(err);
         });
-
-
-
 });
+
 // Listen on port
 app.listen(PORT, function () {
     console.log("Listening on port:" + PORT);
