@@ -38,7 +38,7 @@ app.set("view engine", "handlebars");
 app.use(router);
 
 // If app is deployed, use the deployed database. Otherwise use the local database called gamingHeadlines
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/gameingHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user1122:user2211@ds337418.mlab.com:37418/heroku_7nqhswkw";
 
 // Connect to the mongo DB
 mongoose.connect(MONGODB_URI, {
