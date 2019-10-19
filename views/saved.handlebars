@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-     <a href="https://github.com/Runexz/Gaming-Scrape" target="_blank" class="navbar-brand">
-    <img src="../images/ricon.png" width="30" height="30" alt=""></a>
+    <a href="https://github.com/Runexz/Gaming-Scrape" target="_blank" class="navbar-brand">
+        <img src="../images/ricon.png" width="30" height="30" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,11 +24,19 @@
     <p>Here are all the Articles you saved with your notes attached!</p>
 </div>
 
+<div class="class container">
+    <div class="form-group">
+        <label for="newMessage">Make a note!</label>
+        <textarea class="form-control" id="newMessage" rows="2"></textarea>
+    </div>
+</div>
+
 <div class="container article-container">
     {{#each noteSchema}}
     <div class="card">
         <div class="card-header">
-            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span>Click here to add a Note!</span></h3>
+            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span>Click here to save this Note!</span>
+            </h3>
         </div>
         <div class="card-body">
             <h5 class="card-title">{{this.title}}</h5>
@@ -38,9 +46,34 @@
             <br>
             <p class="card-text">{{this.note}}</p>
         </div>
+        {{!-- <div class="d-flex justify-content-end">
+        <button type="submit" data-id="{{this._id}}" class="btn btn-primary" id="saveNote">Save your note!</button>
+        </div> --}}
     </div>
     {{/each}}
 </div>
+
+{{!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Article note</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="message-text" class="col-form-label">Please make a note on the Article:</label>
+            <textarea class="form-control" id="newMessage"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary save-note" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
 
 <div class="card fixed-bottom text-white text-center bg-dark">
     <div class="card-body">
