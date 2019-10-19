@@ -30,6 +30,7 @@ $(document).on("click", ".card", function () {
   console.log(thisSummary)
   console.log(thisLink)
 
+  // Sends thisId, Title, Summary, Link to POST /notes
   $.ajax({
     method: "POST",
     url: "/notes",
@@ -43,7 +44,4 @@ $(document).on("click", ".card", function () {
       console.log(data);
       $('#exampleModal').modal('toggle')
     })
-
-  //   alert("Your Article has been saved")
-
 })
