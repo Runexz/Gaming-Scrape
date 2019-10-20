@@ -26,7 +26,7 @@
 
 <div class="class container">
     <div class="form-group">
-        <label for="newMessage">Make a note!</label>
+        <label for="newMessage" class="ml-5 text-white">1) First Make a note!</label>
         <textarea class="form-control" id="newMessage" rows="2"></textarea>
     </div>
 </div>
@@ -35,7 +35,7 @@
     {{#each noteSchema}}
     <div class="card">
         <div class="card-header">
-            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span>Click here to save this Note!</span>
+            <h3 class="mongoid" data-id="{{this._id}}">{{this._id}} &nbsp; <span class="clicky">2) Then Click here to save this Note!</span>
             </h3>
         </div>
         <div class="card-body">
@@ -43,7 +43,7 @@
             <p class="card-text">{{this.summary}}</p>
             <a href="https://www.gameinformer.com{{this.link}}" target="_blank">{{this.link}}</a>
             <br>
-            <p class="card-text">{{this.note}}</p>
+            <p class="card-text">Here is your note: {{this.note}}</p>
         </div>
     </div>
     {{/each}}
