@@ -14,7 +14,7 @@ $(".scrape-new").click(function () {
   alert("The articles have been gathered");
 
   // Reload the page so handlebars can display those artiles
-  location.reload();
+  window.location.reload();
   console.log("The page has been reloaded!")
 });
 
