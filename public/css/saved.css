@@ -19,6 +19,15 @@ h1, p {
     
 }
 
+label {
+    font-size: 30px;
+}
+
+.clicky {
+    margin-left: 55px;
+    color: red;
+}
+
 .card {
     margin-top: 15px;
 }
