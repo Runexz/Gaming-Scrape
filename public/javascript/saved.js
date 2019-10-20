@@ -21,6 +21,9 @@ $(document).on("click", ".card", function () {
             // Log the response
             console.log(data);
         });
+
+    alert("A Note has been added!");
+
     // Reload the page
-    location.reload();
+    window.location.reload();
 });
