@@ -44,6 +44,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user1122:user2211@ds3374
 mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useFindAndModify: false
 })
     .then(() => console.log('DB Connected!'))
     .catch(err => {
