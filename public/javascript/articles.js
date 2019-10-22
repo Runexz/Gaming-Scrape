@@ -18,6 +18,25 @@ $(".scrape-new").click(function () {
   console.log("The page has been reloaded!")
 });
 
+// When the CLEAR SAVED ARTICLES button is pressed ajax will be used to scrape data and reload the page.
+$(".clear-scrape").click(function () {
+  console.log("CLEAR button has been pushed!")
+
+  // Ajax will use the GET method to URL: /scrape that is pulled from server.js
+  $.ajax({
+    method: "DELETE",
+    url: "/articles"
+  })
+    .then(function (data) {
+      console.log(data)
+    })
+  alert("The articles have been cleared");
+
+  // Reload the page so handlebars can display those artiles
+  window.location.reload();
+  console.log("The page has been reloaded!")
+});
+
 // When the Make a note button is pressed save the article
 $(document).on("click", ".card", function () {
   console.log("This article has been selected: ")

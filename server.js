@@ -120,6 +120,12 @@ app.get("/articles", function (req, res) {
         });
 });
 
+app.delete("/articles", function(req, res) {
+    db.Article.remove({}, function(err) {
+        console.log("collection removed");
+    });
+});
+
 // Route for getting all Note info from the db
 app.get("/notes", function (req, res) {
     // Grab every document in the Note collection
