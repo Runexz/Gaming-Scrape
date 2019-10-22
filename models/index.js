@@ -1,5 +1,5 @@
-var Article = require('./models/Article');
-var Note = require('./models/Note');
+var Article = require('./Article');
+var Note = require('./Note');
 
 // Exporting an object containing all of our models
 module.exports = {
