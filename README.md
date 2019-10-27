@@ -24,3 +24,7 @@ All the articles that the user stored and made notes on will be displayed here o
 #### Sample of Saved Articles Screen
 
 ![Screenshot of the Saved Articles Screen](public/images/articleindex.png)
+
+#### Link to Application
+
+[Gaming-Scrape](https://fast-sierra-27728.herokuapp.com)
